@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Home</title>
+   <title>Flatadango</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Home</h1>
-    <p>Welcome to the home page.</p>
-    <p><a href="about.php">About</a></p>
+    <div class="films">
+       <div id="movie-details">
+            <img id="poster" src="" alt="Movie Poster">
+            <h2 id="title"></h2>
+            <p id="runtime"></p>
+            <p id="showtime"></p>
+            <p id="available-tickets"></p>
+            <button id="buy-ticket-btn">Buy Ticket</button>
+            <p id="sold-out-message" style="color: red; display: none;">Sold Out</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
