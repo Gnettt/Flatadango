@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const poster = document.getElementById("poster");
     const buyTicketBtn = document.getElementById("buy-ticket");
 
-    fetch("http://localhost:5500/films")
+    fetch("http://localhost:5500")
         .then(response => response.json())
         .then(movies => {
             movies.forEach(movie => addMovieToList(movie));
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function addMovieToList(movie) {
         const li = document.createElement("li");
-        li.textContent = movie.title;
+        li.textContent = movie.title;``
         li.dataset.id = movie.id;
         li.classList.add("film", "item");
         li.addEventListener("click", () => displayMovieDetails(movie));
@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const movieId = document.querySelector(".film.item.selected")?.dataset.id;
         if (!movieId) return;
 
-        fetch(`http://localhost:5500/films/${movieId}`)
+        fetch(`http://localhost:5500${movieId}`)
             .then(response => response.json())
             .then(movie => {
                 if (movie.tickets_sold < movie.capacity) {
                     const updatedTicketsSold = movie.tickets_sold + 1;
-                    fetch(`http://localhost:5500/films/${movieId}`, {
+                    fetch(`http://localhost:5500${movieId}`, {
                         method: "PATCH",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ tickets_sold: updatedTicketsSold })
